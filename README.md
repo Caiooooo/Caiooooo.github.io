@@ -17,3 +17,6 @@
 1.下载nodejs以及相关依赖，使用node server.js启动服务器。
 2.若要使用音视频通话功能还需下载coturn在3874端口启动stun服务器。
 3.若要使用jupyterLab，则还需要在localhost:8888启动jupyterLab。
+
+# 发布博文
+将md文件放在www/blog下就好啦
