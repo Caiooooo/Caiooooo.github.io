@@ -29,10 +29,9 @@ if (title) {
         })
         .catch(error => console.error('Error fetching the file:', error));
 } else {
-    fetch('https://buttonwood.cn/api/files')
+    fetch('../data/blogs.json')
         .then(response => response.json())
         .then(data => {
-
             // 获取cardList元素
             let cardList = document.querySelector('.cardList');
 
@@ -40,8 +39,7 @@ if (title) {
             data.forEach(file => {
                 // 创建新的<a>标签
                 let aTag = document.createElement('a');
-                aTag.href = `https://buttonwood.cn/createIdea.html?title=${file.slice(0, -3)}`;
-                // aTag.target = '_blank';
+                aTag.href = `createIdea.html?title=${file.slice(0, -3)}`;
                 aTag.classList.add('card-default');
 
                 // 创建card div
