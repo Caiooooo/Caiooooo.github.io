@@ -1,5 +1,3 @@
-
-
 table {
     margin-top: 100px;
     background-color: rgba(255, 255, 255, 80%);
@@ -367,17 +365,35 @@ a {
     font-family: 'Courier New', Courier, monospace;
     height: 60px;
     border: #ccc 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1000;
 }
 
 .right-top i {
-    margin-top: 15px;
-    margin-bottom: -5px;
-    margin-right: -3px;
+    margin-right: 10px;
 }
 
 .right-top span {
-    text-align: center;
+    margin: 0 5px;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.right-top .menu-button {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    z-index: 1000;
+}
+
+@media screen and (min-width: 769px) {
+    .right-top .menu-button {
+        display: none;
+    }
 }
 
 /* for video */
@@ -512,4 +528,39 @@ a {
     width: 96%;
     height: 100%;
     display: inline-block;
+}
+
+.menu-button {
+    display: none;
+    width: 30px;
+    height: 25px;
+    position: relative;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.menu-button span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-button span:nth-child(1) { top: 0; }
+.menu-button span:nth-child(2) { top: 10px; }
+.menu-button span:nth-child(3) { top: 20px; }
+
+.menu-button.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.menu-button.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-button.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }

@@ -16,21 +16,79 @@
         <div class="left-box" id="left-box"></div>
 
         <script>
+            // 检测是否为移动设备
+            function isMobileDevice() {
+                return window.innerWidth / window.innerHeight < 1.2; // 使用宽高比来判断，小于1.2认为是移动设备
+            }
+
+            // 设置左侧栏宽度
+            function setLeftBoxWidth() {
+                const leftBox = document.getElementById('left-box');
+                const handler = document.querySelector('.handler');
+                const containerWidth = document.querySelector('.container').offsetWidth;
+                const menuButton = document.getElementById('menu-button');
+                
+                if (isMobileDevice()) {
+                    leftBox.style.width = '0';
+                    handler.style.left = "5px";
+                    handler.classList.add('close');
+                    menuButton.style.display = 'block';
+                } else {
+                    // 使用容器宽度的20%作为侧边栏宽度，最小210px
+                    const sidebarWidth = Math.max(containerWidth * 0.02, 210);
+                    leftBox.style.width = sidebarWidth + 'px';
+                    handler.style.left = (sidebarWidth + 5) + "px";
+                    handler.classList.remove('close');
+                    menuButton.style.display = 'none';
+                }
+            }
+
             // 使用 JavaScript 动态加载 left-box.html
             fetch('leftbox.html')
                 .then(response => response.text())
                 .then(data => {
-
                     document.getElementById('left-box').innerHTML = data;
                     const items = document.querySelectorAll('.item');
                     items[5].style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                    
+                    // 初始设置宽度
+                    setLeftBoxWidth();
 
+                    // 监听窗口大小变化
+                    window.addEventListener('resize', setLeftBoxWidth);
+
+                    // 添加菜单按钮点击事件
+                    const menuButton = document.getElementById('menu-button');
+                    const leftBox = document.getElementById('left-box');
+                    const handler = document.querySelector('.handler');
+                    
+                    menuButton.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        if (leftBox.style.width === '0px') {
+                            leftBox.style.width = '210px';
+                            handler.style.left = "215px";
+                            handler.classList.remove('close');
+                        } else {
+                            leftBox.style.width = '0';
+                            handler.style.left = "5px";
+                            handler.classList.add('close');
+                        }
+                    });
                 })
                 .catch(error => console.error('Error loading left-box.html:', error));
         </script>
 
 
-        <div class="right-box" style="font-family:myfont;overflow-y: scroll;background-color: rgba(248, 248, 255, 0.95);">
+        <div class="right-box" style="font-family:myfont;overflow-y: scroll;background-color: rgb(248, 248, 255);">
+            <!-- 添加菜单按钮 -->
+            <div class="right-top">
+                <div class="menu-button" id="menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <span>关于我们</span>
+            </div>
             <div id="aboutusmain" style="font-family: myfont;margin-top: 50px;width: 70%;">
                 网页作者：Buttonwood
                 <br><br>

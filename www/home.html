@@ -11,26 +11,83 @@
 </head>
 <body onload="loaduser()" id="home">
     <div class="container">
-
-<!--        侧边栏目    -->
+        <!--        侧边栏目    -->
+        
         <!-- 在页面中加入一个容器 -->
         <div class="left-box" id="left-box"></div>
         <script>
+            // 检测是否为移动设备
+            function isMobileDevice() {
+                return window.innerWidth / window.innerHeight < 1.2; // 使用宽高比来判断，小于1.2认为是移动设备
+            }
+
+            // 设置左侧栏宽度
+            function setLeftBoxWidth() {
+                const leftBox = document.getElementById('left-box');
+                const handler = document.querySelector('.handler');
+                const containerWidth = document.querySelector('.container').offsetWidth;
+                const menuButton = document.getElementById('menu-button');
+                
+                if (isMobileDevice()) {
+                    leftBox.style.width = '0';
+                    handler.style.left = "5px";
+                    handler.classList.add('close');
+                    menuButton.style.display = 'block';
+                } else {
+                    // 使用容器宽度的20%作为侧边栏宽度，最小210px
+                    const sidebarWidth = Math.max(containerWidth * 0.02, 210);
+                    leftBox.style.width = sidebarWidth + 'px';
+                    handler.style.left = (sidebarWidth + 5) + "px";
+                    handler.classList.remove('close');
+                    menuButton.style.display = 'none';
+                }
+            }
+
             // 使用 JavaScript 动态加载 left-box.html
             fetch('leftbox.html')
                 .then(response => response.text())
                 .then(data => {
-
                     document.getElementById('left-box').innerHTML = data;
                     const items = document.querySelectorAll('.item');
                     items[0].style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                    
+                    // 初始设置宽度
+                    setLeftBoxWidth();
 
+                    // 监听窗口大小变化
+                    window.addEventListener('resize', setLeftBoxWidth);
+
+                    // 添加菜单按钮点击事件
+                    const leftBox = document.getElementById('left-box');
+                    const handler = document.querySelector('.handler');
+                    
+                    const menuButton = document.getElementById('menu-button');
+                    menuButton.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        if (leftBox.style.width === '0px') {
+                            leftBox.style.width = '210px';
+                            handler.style.left = "215px";
+                            handler.classList.remove('close');
+                        } else {
+                            leftBox.style.width = '0';
+                            handler.style.left = "5px";
+                            handler.classList.add('close');
+                        }
+                    });
                 })
                 .catch(error => console.error('Error loading left-box.html:', error));
         </script>
 
 
         <div class="right-box" style="background:none;overflow-y: hidden;">
+            <!-- 移动端菜单按钮移到这里 -->
+            <div class="right-top" style="background: none;border: none;">
+                <div class="menu-button" id="menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
             <div id="container">
                 <video id="background_video" loop muted></video>
                 <div id="video_cover"></div>

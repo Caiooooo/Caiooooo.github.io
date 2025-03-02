@@ -5,7 +5,7 @@ title = urlParams.get('title');
 
 if (title) {
     document.title = title;
-    file_path = '../blog/' + title + '.md';
+    file_path = './blog/' + title + '.md';
     // 使用 fetch 获取文件内容
     fetch(file_path)
         .then(response => {
