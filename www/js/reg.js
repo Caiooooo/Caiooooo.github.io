@@ -71,40 +71,6 @@ function loaduser(){
 function chk(){
 
 }
-startSocket();
-function startSocket(){
-    socket = io.connect();
-
-    //监听从服务器发来的消息
-    socket.on('connect', function() {
-        console.log("Connected to server with ID:", socket.id);
-    });
-    socket.on("loginsuc", (uname)=>{
-        window.location.href = "chat.html?uname="+uname;
-    });
-
-    socket.on("loginfailed",()=>{
-        alert("账户密码不正确或用户不存在，请重新输入！");
-        jumpToLog();
-    });
-
-    socket.on("serverErr",()=>{
-        alert("服务器连接异常");
-    });
-
-    socket.on("samename",()=>{
-        alert("用户名已存在!");
-        jumpToIn();
-    });
-
-    socket.on("registsuc",()=>{
-        jumpToLog();
-        alert("注册成功!");
-    });
-
-
-}
-
 
 
 
