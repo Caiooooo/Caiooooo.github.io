@@ -404,6 +404,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
+    transition: background-color 0.3s ease;
 }
 
 #background_video {
@@ -544,7 +545,7 @@ a {
     position: absolute;
     height: 3px;
     width: 100%;
-    background: #fff;
+    background: #3d3d3d;
     border-radius: 3px;
     transition: all 0.3s ease;
 }
@@ -563,4 +564,25 @@ a {
 
 .menu-button.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
+}
+
+@media screen and (max-width: 768px) {
+    #container {
+        background: #fff !important;
+    }
+    
+    #main_content {
+        color: #000 !important;
+    }
+    
+    #main_content h1,
+    #main_content .sub_head,
+    #main_content .info {
+        color: #000 !important;
+    }
+    
+    #links a {
+        color: #000 !important;
+        border-color: #000 !important;
+    }
 }

@@ -96,7 +96,7 @@
                 <section id="main_content">
                     <div id="head">
                         <h1 style="font-family: fa;font-size: 300%;font-weight: 300;">
-                            <img src="img/whitelogo.png" style="width: 100px; margin-bottom: -30px;">
+                            <img src="img/whitelogo.png" style="width: 100px; margin-bottom: -30px;" id="logo-img">
                             寻声</h1>
                         <p class="sub_head">buttonwood的博客</p>
                         <p class="info">这是我的个人博客，用于展示一些文章和搭建开发环境，欢迎参观使用</p>
@@ -114,5 +114,52 @@
 
     <script src="js/reg.js"></script>
     <script src="js/bideo.js"></script>
+    <script>
+        function handleMobileLayout() {
+            const container = document.getElementById('container');
+            const video = document.getElementById('background_video');
+            const videoCover = document.getElementById('video_cover');
+            const overlay = document.getElementById('overlay');
+            const mainContent = document.getElementById('main_content');
+            const logoImg = document.getElementById('logo-img');
+            
+            if (isMobileDevice()) {
+                // 移动端样式
+                container.style.background = '#fff';
+                video.style.display = 'none';
+                videoCover.style.display = 'none';
+                overlay.style.display = 'none';
+                mainContent.style.color = '#000';
+                document.querySelectorAll('#main_content h1, #main_content .sub_head, #main_content .info')
+                    .forEach(el => el.style.color = '#000');
+                document.querySelectorAll('#links a')
+                    .forEach(el => {
+                        el.style.color = '#000';
+                        el.style.borderColor = '#000';
+                    });
+                logoImg.src = 'img/logo.png'; // 切换为深色logo
+            } else {
+                // 桌面端样式
+                container.style.background = 'none';
+                video.style.display = 'block';
+                videoCover.style.display = 'block';
+                overlay.style.display = 'block';
+                mainContent.style.color = '#fff';
+                document.querySelectorAll('#main_content h1, #main_content .sub_head, #main_content .info')
+                    .forEach(el => el.style.color = '#fff');
+                document.querySelectorAll('#links a')
+                    .forEach(el => {
+                        el.style.color = '#fff';
+                        el.style.borderColor = 'rgba(255, 255, 255, 0.20)';
+                    });
+                logoImg.src = 'img/whitelogo.png'; // 切换回白色logo
+            }
+        }
+
+        // 初始化时执行
+        handleMobileLayout();
+        // 监听窗口大小变化
+        window.addEventListener('resize', handleMobileLayout);
+    </script>
 </body>
 </html>
