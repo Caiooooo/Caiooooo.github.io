@@ -104,7 +104,7 @@ a {
 
 @font-face {
     font-family: fa;
-    src: url(../resources/rabbit\ font.ttf);
+    src: url(../resources/rabbit.ttf);
 }
 
 @font-face {
@@ -568,7 +568,7 @@ a {
 
 @media screen and (max-width: 768px) {
     #container {
-        background: #fff !important;
+        background: #F8F8FF !important;
     }
     
     #main_content {

@@ -39,6 +39,7 @@
                     handler.style.left = "5px";
                     handler.classList.add('close');
                     menuButton.style.display = 'block';
+                    document.querySelector(".right-top-span-2").style.display = 'none';
                 } else {
                     // 使用容器宽度的20%作为侧边栏宽度，最小210px
                     const sidebarWidth = Math.max(containerWidth * 0.02, 210);
@@ -97,7 +98,7 @@
                 </div>
                 <i class="icon-create"></i>
                 <span>个人博客</span>
-                <span>寻感论剑证道</span>
+                <span class="right-top-span-2">寻感论剑证道</span>
                 <p><br></p>
             </div>
             <div class="cardList" >
@@ -117,7 +118,6 @@
         </div>
     </div>
 
-    <script src="js/reg.js"></script>
     <script src="js/blog.js"></script>
     <script>hljs.highlightAll();</script>
 </body>

@@ -36,6 +36,7 @@
                     handler.style.left = "5px";
                     handler.classList.add('close');
                     menuButton.style.display = 'block';
+                    document.querySelector(".right-top-span-2").style.display = 'none';
                 } else {
                     // 使用容器宽度的20%作为侧边栏宽度，最小210px
                     const sidebarWidth = Math.max(containerWidth * 0.02, 210);
@@ -91,7 +92,7 @@
                 </div>
                 <i class="icon-photo"></i>
                 <span>足迹地图</span>
-                <span>记录美好生活</span>
+                <span class="right-top-span-2">记录美好生活</span>
                 <p><br></p>
             </div>
             <div class="cardList" style="
@@ -108,6 +109,5 @@
             <div class="handler"> </div>
         </div>
     </div>
-    <script src="js/reg.js"></script>
 </body>
 </html>
