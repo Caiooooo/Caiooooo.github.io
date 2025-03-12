@@ -236,3 +236,39 @@ db.serialize(()=> {
             logger.info(rows)
     })
 });
+
+// 博客文章SEO友好URL
+app.get('/blog/:slug', (req, res) => {
+    const slug = req.params.slug;
+    // 查找对应的MD文件
+    const blogDir = path.join(__dirname, 'www', 'blog');
+    fs.readdir(blogDir, (err, files) => {
+        if (err) {
+            console.error('读取博客目录失败:', err);
+            return res.status(404).send('未找到博客文章');
+        }
+        
+        // 尝试匹配文件名或转换后的slug
+        const matchingFile = files.find(file => {
+            if (file.endsWith('.md')) {
+                // 移除.md扩展名
+                const fileNameWithoutExt = file.slice(0, -3);
+                // 创建slug版本（移除特殊字符，替换空格为连字符）
+                const fileSlug = fileNameWithoutExt
+                    .replace(/[\[\]]/g, '')
+                    .replace(/[,，\s]/g, '-')
+                    .toLowerCase();
+                
+                return fileSlug === slug || fileNameWithoutExt === decodeURIComponent(slug);
+            }
+            return false;
+        });
+        
+        if (matchingFile) {
+            // 重定向到createIdea.html页面，带上标题参数
+            res.redirect(`/www/createIdea.html?title=${encodeURIComponent(matchingFile.slice(0, -3))}`);
+        } else {
+            res.status(404).send('未找到博客文章');
+        }
+    });
+});

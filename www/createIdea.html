@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>寻感 - 寻找无穷创作灵感</title>
+    <meta id="meta-description" name="description" content="寻感 - 寻找无穷创作灵感，分享技术与游戏经验">
+    <meta id="meta-keywords" name="keywords" content="博客,技术分享,游戏攻略">
+    <link id="canonical-link" rel="canonical" href="https://buttonwood.cn/www/createIdea.html">
     <link rel="shortcut icon" href="img/logo.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/font.css">
@@ -15,6 +18,34 @@
     <script src="js/highlight.min.js"></script>
     <script src="js/reg.js"></script>
     <script src="js/marked.min.js"></script>
+
+    <script>
+        // 动态更新SEO相关元标签
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const title = urlParams.get('title');
+            
+            if (title) {
+                // 更新页面标题
+                document.title = decodeURIComponent(title) + ' - 寻感博客';
+                
+                // 更新meta description
+                const metaDesc = document.getElementById('meta-description');
+                metaDesc.content = '寻感博客 - ' + decodeURIComponent(title) + '，提供详细解决方案和技术指导';
+                
+                // 更新meta keywords
+                const metaKeywords = document.getElementById('meta-keywords');
+                // 从标题中提取关键词
+                const keywordsFromTitle = decodeURIComponent(title).replace(/[\[\]]/g, '').split(/[,，\s]/);
+                const filteredKeywords = keywordsFromTitle.filter(k => k.length > 1);
+                metaKeywords.content = filteredKeywords.join(',') + ',教程,解决方案,博客';
+                
+                // 更新规范链接
+                const canonicalLink = document.getElementById('canonical-link');
+                canonicalLink.href = 'https://buttonwood.cn/www/createIdea.html?title=' + encodeURIComponent(title);
+            }
+        });
+    </script>
 
 </head>
 <body onload="loaduser();" id="home">

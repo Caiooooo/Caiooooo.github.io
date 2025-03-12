@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻感博客 - 技术分享与游戏攻略</title>
+    <meta name="description" content="寻感博客提供各种技术教程、游戏攻略和问题解决方案，包括星露谷物语、编程技巧、网络配置等内容。">
+    <meta name="keywords" content="博客,技术分享,游戏攻略,星露谷物语,编程教程,问题解决">
+    <link rel="canonical" href="https://buttonwood.cn/blog/">
+    <link rel="shortcut icon" href="../www/img/logo.png">
+    <link rel="stylesheet" href="../www/css/style.css">
+    <link rel="stylesheet" href="../www/css/font.css">
+    <style>
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: 'myfont', sans-serif;
+        }
+        .blog-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .blog-header img {
+            max-width: 100px;
+        }
+        .blog-header h1 {
+            margin-top: 10px;
+            color: #2c3e50;
+        }
+        .blog-description {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #7f8c8d;
+        }
+        .blog-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .blog-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .blog-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .blog-item h2 {
+            margin-top: 0;
+            color: #3498db;
+        }
+        .blog-item p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        .blog-item a {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        .blog-item a:hover {
+            background-color: #2980b9;
+        }
+        .blog-categories {
+            margin-top: 50px;
+        }
+        .blog-categories h2 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .category-tag {
+            padding: 5px 10px;
+            background-color: #e0e0e0;
+            border-radius: 15px;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .category-tag:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .blog-container {
+                padding: 10px;
+            }
+            .blog-item {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-container">
+        <div class="blog-header">
+            <img src="../www/img/logo.png" alt="寻感博客 Logo">
+            <h1>寻感博客</h1>
+        </div>
+        
+        <div class="blog-description">
+            <p>欢迎访问寻感博客，这里提供各种技术教程、游戏攻略和问题解决方案。</p>
+        </div>
+        
+        <ul class="blog-list">
+            <li class="blog-item">
+                <h2>星露谷物语解决茶苗配方bug问题</h2>
+                <p>在星露谷物语（Stardew Valley）游戏中，许多玩家在触发卡洛琳二星剧情后，会遇到茶苗配方第二天不送到家的问题。本文提供详细的解决方案。</p>
+                <a href="./stardew-valley-tea-sapling-bug-fix.html">阅读全文</a>
+            </li>
+            
+            <li class="blog-item">
+                <h2>第一行代码Jetpack篇——LiveData，Transformations无法导入</h2>
+                <p>解决Android开发中使用Jetpack组件时LiveData和Transformations无法导入的问题。</p>
+                <a href="./jetpack-livedata-transformations-import-issue.html">阅读全文</a>
+            </li>
+            
+            <li class="blog-item">
+                <h2>bomb_lab phase5最详细解析</h2>
+                <p>详细解析CSAPP课程中bomb_lab的phase5部分，帮助理解程序逻辑和解题思路。</p>
+                <a href="./bomb-lab-phase5-detailed-analysis.html">阅读全文</a>
+            </li>
+            
+            <li class="blog-item">
+                <h2>kruskal重构树(以ICPC上海 2021 H.Life is a Game 为例)</h2>
+                <p>通过ICPC上海2021 H题详细讲解kruskal重构树算法的实现和应用。</p>
+                <a href="./kruskal-reconstruction-tree-icpc-shanghai.html">阅读全文</a>
+            </li>
+            
+            <li class="blog-item">
+                <h2>packet tracer路由器配置chap认证</h2>
+                <p>详细介绍如何在Packet Tracer中配置路由器的CHAP认证。</p>
+                <a href="./packet-tracer-router-chap-authentication.html">阅读全文</a>
+            </li>
+            
+            <li class="blog-item">
+                <h2>使用nodejs子域名搭建jupyterlab时的关键配置</h2>
+                <p>详细讲解如何使用Node.js和子域名正确配置JupyterLab服务。</p>
+                <a href="./nodejs-subdomain-jupyterlab-configuration.html">阅读全文</a>
+            </li>
+            
+            <li class="blog-item">
+                <h2>使用sigsuspend完成csapp的shellLab中的waitfg函数</h2>
+                <p>详细讲解如何在CSAPP的Shell Lab中使用sigsuspend正确实现waitfg函数。</p>
+                <a href="./csapp-shell-lab-waitfg-sigsuspend.html">阅读全文</a>
+            </li>
+            
+            <li class="blog-item">
+                <h2>混合编程加速PythonHttp请求速度</h2>
+                <p>通过混合编程技术提升Python HTTP请求的处理速度，提高应用性能。</p>
+                <a href="./python-http-request-acceleration.html">阅读全文</a>
+            </li>
+        </ul>
+        
+        <div class="blog-categories">
+            <h2>文章分类</h2>
+            <div class="category-list">
+                <a href="#" class="category-tag">游戏攻略</a>
+                <a href="#" class="category-tag">编程技巧</a>
+                <a href="#" class="category-tag">网络配置</a>
+                <a href="#" class="category-tag">算法</a>
+                <a href="#" class="category-tag">Android开发</a>
+                <a href="#" class="category-tag">性能优化</a>
+                <a href="#" class="category-tag">问题解决</a>
+            </div>
+        </div>
+        
+        <footer style="text-align: center; margin-top: 50px; color: #7f8c8d; font-size: 0.9em;">
+            <p>© 2024 寻感博客 | <a href="../sitemap.html" style="color: #7f8c8d;">站点地图</a></p>
+        </footer>
+    </div>
+</body>
+</html> 
