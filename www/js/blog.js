@@ -29,7 +29,7 @@ if (title) {
         })
         .catch(error => console.error('Error fetching the file:', error));
 } else {
-    fetch('./data/blogs.json')
+    fetch('./blog/blogs.json')
         .then(response => response.json())
         .then(data => {
             // 获取cardList元素
