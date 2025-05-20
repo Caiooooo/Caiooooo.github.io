@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻感 - 寻找无穷创作灵感</title>
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font.css">
+</head>
+<body onload="loaduser()" id="home">
+    <div class="container">
+        <!-- 移动端菜单按钮 -->
+        
+        <!-- 在页面中加入一个容器 -->
+        <div class="left-box" id="left-box"></div>
+        <script>
+            // 检测是否为移动设备
+            function isMobileDevice() {
+                return window.innerWidth / window.innerHeight < 1.2; // 使用宽高比来判断，小于1.2认为是移动设备
+            }
+
+            // 设置左侧栏宽度
+            function setLeftBoxWidth() {
+                const leftBox = document.getElementById('left-box');
+                const handler = document.querySelector('.handler');
+                const containerWidth = document.querySelector('.container').offsetWidth;
+                const menuButton = document.getElementById('menu-button');
+                
+                if (isMobileDevice()) {
+                    leftBox.style.width = '0';
+                    handler.style.left = "5px";
+                    handler.classList.add('close');
+                    menuButton.style.display = 'block';
+                    document.querySelector(".right-top-span-2").style.display = 'none';
+                } else {
+                    // 使用容器宽度的20%作为侧边栏宽度，最小210px
+                    const sidebarWidth = Math.max(containerWidth * 0.02, 210);
+                    leftBox.style.width = sidebarWidth + 'px';
+                    handler.style.left = (sidebarWidth + 5) + "px";
+                    handler.classList.remove('close');
+                    menuButton.style.display = 'none';
+                }
+            }
+
+            // 使用 JavaScript 动态加载 left-box.html
+            fetch('leftbox.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('left-box').innerHTML = data;
+                    const items = document.querySelectorAll('.item');
+                    items[2].style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                    
+                    // 初始设置宽度
+                    setLeftBoxWidth();
+
+                    // 监听窗口大小变化
+                    window.addEventListener('resize', setLeftBoxWidth);
+
+                    // 添加菜单按钮点击事件
+                    const menuButton = document.getElementById('menu-button');
+                    const leftBox = document.getElementById('left-box');
+                    const handler = document.querySelector('.handler');
+                    
+                    menuButton.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        if (leftBox.style.width === '0px') {
+                            leftBox.style.width = '210px';
+                            handler.style.left = "215px";
+                            handler.classList.remove('close');
+                        } else {
+                            leftBox.style.width = '0';
+                            handler.style.left = "5px";
+                            handler.classList.add('close');
+                        }
+                    });
+                })
+                .catch(error => console.error('Error loading left-box.html:', error));
+        </script>
+
+
+        <div class="right-box">
+            <div class="right-top">
+                
+                <div class="menu-button" id="menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <i class="icon-art"></i>
+                <span>个人项目</span>
+                <span class="right-top-span-2">欢迎积极学习交流</span>
+                <p><br></p>
+            </div>
+            <div class="cardList" >
+                <a href="index.html"  class="card-default">
+                <div class="card">
+                        <div>
+                            <div class="bg-img round card-icon" style="background-image:url(img/icon/webicon/wechat.jpg);width:32px;height:32px;" data-v-31f669e0></div><!---->
+                            <div class="card-main">
+                                <div class="card-name">音视频通话<!----></div>
+                                <div style="width:100%;"><div class="card-des">包含聊天大厅和音视频通话功能</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="http://buttonwood.cn:8887"  class="card-default">
+                    <div class="card">
+                        <div>
+                            <div class="bg-img round card-icon" style="background-image:url(img/logoC+.png);width:32px;height:32px;" data-v-31f669e0></div><!---->
+                            <div class="card-main">
+                                <div class="card-name">超智视图<!----></div>
+                                <div style="width:100%;"><div class="card-des">基于YOLOv5的乳腺早筛系统</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://github.com/Caiooooo/zilean"  class="card-default">
+                    <div class="card">
+                        <div>
+                            <div class="bg-img round card-icon" style="background-image:url(img/rust.svg);width:32px;height:32px;" data-v-31f669e0></div><!---->
+                            <div class="card-main">
+                                <div class="card-name">Zilean<!----></div>
+                                <div style="width:100%;"><div class="card-des">量化高频rust回测引擎</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="./jupyter" target="_blank" class="card-default">
+                <div class="card">
+                        <div>
+                            <div class="bg-img round card-icon" style="background-image:url(img/icon/webicon/jupyter.jpg);width:32px;height:32px;" data-v-31f669e0></div><!---->
+                            <div class="card-main">
+                                <div class="card-name">jupyter lab<!----></div>
+                                <div style="width:100%;"><div class="card-des">个人python开发环境</div></div></div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            <div class="handler"> </div>
+        </div>
+
+
+    </div>
+    <script src="js/reg.js"></script>
+</body>
+</html>

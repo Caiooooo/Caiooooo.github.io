@@ -1,11 +1,165 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=./www/home.html" />
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-  </head>
-  <body>
-    <p>If you are not redirected, <a href="./www/home.html">click here</a>.</p>
-    <p><a href="./sitemap.html">站点地图</a></p>
-  </body>
+    <title>寻声 - 打破第四面墙</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font.css">
+</head>
+<body onload="loaduser()" id="home">
+    <div class="container">
+        <!--        侧边栏目    -->
+        
+        <!-- 在页面中加入一个容器 -->
+        <div class="left-box" id="left-box"></div>
+        <script>
+            // 检测是否为移动设备
+            function isMobileDevice() {
+                return window.innerWidth / window.innerHeight < 1.2; // 使用宽高比来判断，小于1.2认为是移动设备
+            }
+
+            // 设置左侧栏宽度
+            function setLeftBoxWidth() {
+                const leftBox = document.getElementById('left-box');
+                const handler = document.querySelector('.handler');
+                const containerWidth = document.querySelector('.container').offsetWidth;
+                const menuButton = document.getElementById('menu-button');
+                
+                if (isMobileDevice()) {
+                    leftBox.style.width = '0';
+                    handler.style.left = "5px";
+                    handler.classList.add('close');
+                    menuButton.style.display = 'block';
+                } else {
+                    // 使用容器宽度的20%作为侧边栏宽度，最小210px
+                    const sidebarWidth = Math.max(containerWidth * 0.02, 210);
+                    leftBox.style.width = sidebarWidth + 'px';
+                    handler.style.left = (sidebarWidth + 5) + "px";
+                    handler.classList.remove('close');
+                    menuButton.style.display = 'none';
+                }
+            }
+
+            // 使用 JavaScript 动态加载 left-box.html
+            fetch('leftbox.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('left-box').innerHTML = data;
+                    const items = document.querySelectorAll('.item');
+                    items[0].style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                    
+                    // 初始设置宽度
+                    setLeftBoxWidth();
+
+                    // 监听窗口大小变化
+                    window.addEventListener('resize', setLeftBoxWidth);
+
+                    // 添加菜单按钮点击事件
+                    const leftBox = document.getElementById('left-box');
+                    const handler = document.querySelector('.handler');
+                    
+                    const menuButton = document.getElementById('menu-button');
+                    menuButton.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        if (leftBox.style.width === '0px') {
+                            leftBox.style.width = '210px';
+                            handler.style.left = "215px";
+                            handler.classList.remove('close');
+                        } else {
+                            leftBox.style.width = '0';
+                            handler.style.left = "5px";
+                            handler.classList.add('close');
+                        }
+                    });
+                })
+                .catch(error => console.error('Error loading left-box.html:', error));
+        </script>
+
+
+        <div class="right-box" style="background:none;overflow-y: hidden;">
+            <!-- 移动端菜单按钮移到这里 -->
+            <div class="right-top" style="background: none;border: none;">
+                <div class="menu-button" id="menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="container">
+                <video id="background_video" loop muted></video>
+                <div id="video_cover"></div>
+                <div id="overlay"></div>
+            
+                <section id="main_content">
+                    <div id="head">
+                        <h1 style="font-family: fa;font-size: 300%;font-weight: 300;">
+                            <img src="img/whitelogo.png" style="width: 100px; margin-bottom: -30px;" id="logo-img">
+                            寻声</h1>
+                        <p class="sub_head">buttonwood的博客</p>
+                        <p class="info">这是我的个人博客，用于展示一些文章和搭建开发环境，欢迎参观使用</p>
+                    </div>
+            
+                    <div id="links">
+                        <a href="designIdea.html">开始探索</a>
+                        <a href="aboutUs.html">了解我们</a>
+                    </div>
+                </section>
+            </div>
+            <div class="handler"> </div>
+        </div>
+    </div>
+
+    <script src="js/reg.js"></script>
+    <script src="js/bideo.js"></script>
+    <script>
+        function handleMobileLayout() {
+            const container = document.getElementById('container');
+            const video = document.getElementById('background_video');
+            const videoCover = document.getElementById('video_cover');
+            const overlay = document.getElementById('overlay');
+            const mainContent = document.getElementById('main_content');
+            const logoImg = document.getElementById('logo-img');
+            
+            if (isMobileDevice()) {
+                // 移动端样式
+                container.style.background = '#F8F8FF';
+                video.style.display = 'none';
+                videoCover.style.display = 'none';
+                overlay.style.display = 'none';
+                mainContent.style.color = '#000';
+                document.querySelectorAll('#main_content h1, #main_content .sub_head, #main_content .info')
+                    .forEach(el => el.style.color = '#000');
+                document.querySelectorAll('#links a')
+                    .forEach(el => {
+                        el.style.color = '#000';
+                        el.style.borderColor = '#000';
+                    });
+                logoImg.src = 'img/logo.png'; // 切换为深色logo
+            } else {
+                // 桌面端样式
+                container.style.background = 'none';
+                video.style.display = 'block';
+                videoCover.style.display = 'block';
+                overlay.style.display = 'block';
+                mainContent.style.color = '#fff';
+                document.querySelectorAll('#main_content h1, #main_content .sub_head, #main_content .info')
+                    .forEach(el => el.style.color = '#fff');
+                document.querySelectorAll('#links a')
+                    .forEach(el => {
+                        el.style.color = '#fff';
+                        el.style.borderColor = 'rgba(255, 255, 255, 0.20)';
+                    });
+                logoImg.src = 'img/whitelogo.png'; // 切换回白色logo
+            }
+        }
+
+        // 初始化时执行
+        handleMobileLayout();
+        // 监听窗口大小变化
+        window.addEventListener('resize', handleMobileLayout);
+    </script>
+</body>
 </html>

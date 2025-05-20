@@ -5,7 +5,7 @@
 - 音视频通话
 - jupyterlab重定向等
 - 网站推荐
-- 在www/blogs下面的md文件自动渲染展示，代码高亮
+- 在blog下面的md文件自动渲染展示，代码高亮
 - 足迹地图
 - 丝滑侧边栏
 
@@ -19,4 +19,4 @@
 3.若要使用jupyterLab，则还需要在localhost:8888启动jupyterLab。
 
 # 发布博文
-将md文件放在www/blog下就好啦
+将md文件放在blog目录下就好啦

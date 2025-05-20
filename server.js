@@ -21,7 +21,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 var app = express();
 
-const blogDirectory = 'www/blog';
+const blogDirectory = 'blog';
 
 // 创建一个路由来获取所有文件名
 app.get('/api/files', (req, res) => {
@@ -67,7 +67,7 @@ app.use('/jupyter', createProxyMiddleware({
 }));
 
 // app.use('/', express.static('static'));
-app.use(express.static("./www",{index:"home.html"}));
+app.use(express.static("./", {index:"index.html"}));
 var opt = {
     key:fs.readFileSync("./ssl/sslServer.key"),
     cert:fs.readFileSync("./ssl/sslServer.crt")
@@ -241,7 +241,7 @@ db.serialize(()=> {
 app.get('/blog/:slug', (req, res) => {
     const slug = req.params.slug;
     // 查找对应的MD文件
-    const blogDir = path.join(__dirname, 'www', 'blog');
+    const blogDir = path.join(__dirname, 'blog');
     fs.readdir(blogDir, (err, files) => {
         if (err) {
             console.error('读取博客目录失败:', err);
@@ -266,7 +266,7 @@ app.get('/blog/:slug', (req, res) => {
         
         if (matchingFile) {
             // 重定向到createIdea.html页面，带上标题参数
-            res.redirect(`/www/createIdea.html?title=${encodeURIComponent(matchingFile.slice(0, -3))}`);
+            res.redirect(`/createIdea.html?title=${encodeURIComponent(matchingFile.slice(0, -3))}`);
         } else {
             res.status(404).send('未找到博客文章');
         }

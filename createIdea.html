@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻感 - 寻找无穷创作灵感</title>
+    <meta id="meta-description" name="description" content="寻感 - 寻找无穷创作灵感，分享技术与游戏经验">
+    <meta id="meta-keywords" name="keywords" content="博客,技术分享,游戏攻略">
+    <link id="canonical-link" rel="canonical" href="https://buttonwood.cn/www/createIdea.html">
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/github-markdown-light.min.css">
+    <link rel="stylesheet" href="css/codestyle.css">
+
+
+    <script src="js/highlight.min.js"></script>
+    <script src="js/reg.js"></script>
+    <script src="js/marked.min.js"></script>
+
+    <script>
+        // 动态更新SEO相关元标签
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const title = urlParams.get('title');
+            
+            if (title) {
+                // 更新页面标题
+                document.title = decodeURIComponent(title) + ' - 寻感博客';
+                
+                // 更新meta description
+                const metaDesc = document.getElementById('meta-description');
+                metaDesc.content = '寻感博客 - ' + decodeURIComponent(title) + '，提供详细解决方案和技术指导';
+                
+                // 更新meta keywords
+                const metaKeywords = document.getElementById('meta-keywords');
+                // 从标题中提取关键词
+                const keywordsFromTitle = decodeURIComponent(title).replace(/[\[\]]/g, '').split(/[,，\s]/);
+                const filteredKeywords = keywordsFromTitle.filter(k => k.length > 1);
+                metaKeywords.content = filteredKeywords.join(',') + ',教程,解决方案,博客';
+                
+                // 更新规范链接
+                const canonicalLink = document.getElementById('canonical-link');
+                canonicalLink.href = 'https://buttonwood.cn/www/createIdea.html?title=' + encodeURIComponent(title);
+            }
+        });
+    </script>
+
+</head>
+<body onload="loaduser();" id="home">
+    <div class="container">
+
+        <div class="left-box" id="left-box"></div>
+        <script>
+            // 检测是否为移动设备
+            function isMobileDevice() {
+                return window.innerWidth / window.innerHeight < 1.2; // 使用宽高比来判断，小于1.2认为是移动设备
+            }
+
+            // 设置左侧栏宽度
+            function setLeftBoxWidth() {
+                const leftBox = document.getElementById('left-box');
+                const handler = document.querySelector('.handler');
+                const containerWidth = document.querySelector('.container').offsetWidth;
+                const menuButton = document.getElementById('menu-button');
+                
+                if (isMobileDevice()) {
+                    leftBox.style.width = '0';
+                    handler.style.left = "5px";
+                    handler.classList.add('close');
+                    menuButton.style.display = 'block';
+                    document.querySelector(".right-top-span-2").style.display = 'none';
+                } else {
+                    // 使用容器宽度的20%作为侧边栏宽度，最小210px
+                    const sidebarWidth = Math.max(containerWidth * 0.02, 210);
+                    leftBox.style.width = sidebarWidth + 'px';
+                    handler.style.left = (sidebarWidth + 5) + "px";
+                    handler.classList.remove('close');
+                    menuButton.style.display = 'none';
+                }
+            }
+
+            // 使用 JavaScript 动态加载 left-box.html
+            fetch('leftbox.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('left-box').innerHTML = data;
+                    const items = document.querySelectorAll('.item');
+                    items[4].style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                    
+                    // 初始设置宽度
+                    setLeftBoxWidth();
+
+                    // 监听窗口大小变化
+                    window.addEventListener('resize', setLeftBoxWidth);
+
+                    // 添加菜单按钮点击事件
+                    const menuButton = document.getElementById('menu-button');
+                    const leftBox = document.getElementById('left-box');
+                    const handler = document.querySelector('.handler');
+                    
+                    menuButton.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        if (leftBox.style.width === '0px') {
+                            leftBox.style.width = '210px';
+                            handler.style.left = "215px";
+                            handler.classList.remove('close');
+                        } else {
+                            leftBox.style.width = '0';
+                            handler.style.left = "5px";
+                            handler.classList.add('close');
+                        }
+                    });
+                })
+                .catch(error => console.error('Error loading left-box.html:', error));
+        </script>
+        <div class="right-box">
+            <div class="handler">  </div>
+            <div class="bg"></div>
+            <div class="addbox">  </div>
+            <div class="right-top">
+                
+                <!-- 移动端菜单按钮 -->
+                <div class="menu-button" id="menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <i class="icon-create"></i>
+                <span>个人博客</span>
+                <span class="right-top-span-2">寻感论剑证道</span>
+                <p><br></p>
+            </div>
+            <div class="cardList" >
+
+            </div>
+            <textarea id="$t" style="display:none;">
+                *Blog* not **Found** here.
+            </textarea>
+            <div id="$m" class="markdown-body" style="text-align: left;margin:2%"></div>
+
+
+            <!--                <textarea id="$t" style="display:none">-->
+
+
+
+
+        </div>
+    </div>
+
+    <script src="js/blog.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
