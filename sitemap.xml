@@ -50,7 +50,7 @@
   
   <!-- 登录页 -->
   <url>
-    <loc>https://buttonwood.cn/log.html</loc>
+    <loc>https://buttonwood.cn/server/log.html</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -58,7 +58,7 @@
   
   <!-- 注册页 -->
   <url>
-    <loc>https://buttonwood.cn/login.html</loc>
+    <loc>https://buttonwood.cn/server/login.html</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -66,7 +66,7 @@
   
   <!-- 聊天页面 -->
   <url>
-    <loc>https://buttonwood.cn/chat.html</loc>
+    <loc>https://buttonwood.cn/server/chat.html</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -74,7 +74,7 @@
   
   <!-- 视频房间 -->
   <url>
-    <loc>https://buttonwood.cn/videoRoom.html</loc>
+    <loc>https://buttonwood.cn/server/videoRoom.html</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -90,56 +90,56 @@
   
   <!-- 博客文章 - SEO友好URL -->
   <url>
-    <loc>https://buttonwood.cn/blog/stardew-valley-tea-sapling-bug-fix</loc>
+    <loc>https://buttonwood.cn/blog/Stardew%20Valley%20%E8%8C%B6%E8%8B%97bug%E4%BF%AE%E5%A4%8D</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://buttonwood.cn/blog/jetpack-livedata-transformations-import-issue</loc>
+    <loc>https://buttonwood.cn/blog/Jetpack%E7%AF%87%20-%20LiveData%20Transformations%E5%AF%BC%E5%85%A5%E9%97%AE%E9%A2%98</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://buttonwood.cn/blog/bomb-lab-phase5-detailed-analysis</loc>
+    <loc>https://buttonwood.cn/blog/Bomb%20Lab%20Phase5%20%E6%9C%80%E8%AF%A6%E7%BB%86%E8%A7%A3%E6%9E%90</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://buttonwood.cn/blog/kruskal-reconstruction-tree-icpc-shanghai</loc>
+    <loc>https://buttonwood.cn/blog/Kruskal%E9%87%8D%E6%9E%84%E6%A0%91%20ICPC%E4%B8%8A%E6%B5%B7%E7%AB%99H%E9%A2%98</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://buttonwood.cn/blog/packet-tracer-router-chap-authentication</loc>
+    <loc>https://buttonwood.cn/blog/packet%20tracer%E8%B7%AF%E7%94%B1%E5%99%A8%E9%85%8D%E7%BD%AECHAP%E8%AE%A4%E8%AF%81</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://buttonwood.cn/blog/nodejs-subdomain-jupyterlab-configuration</loc>
+    <loc>https://buttonwood.cn/blog/nodejs%E5%AD%90%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BAjupyterlab</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://buttonwood.cn/blog/csapp-shell-lab-waitfg-sigsuspend</loc>
+    <loc>https://buttonwood.cn/blog/CSAPP%20Shell%20Lab%20sigsuspend%E5%AE%9E%E7%8E%B0waitfg%E5%87%BD%E6%95%B0</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://buttonwood.cn/blog/python-http-request-acceleration</loc>
+    <loc>https://buttonwood.cn/blog/%E6%B7%B7%E5%90%88%E7%BC%96%E7%A8%8B%E5%8A%A0%E9%80%9FPython%20HTTP%E8%AF%B7%E6%B1%82</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>

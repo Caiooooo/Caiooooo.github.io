@@ -80,10 +80,10 @@ function chk(){
 
 // jumpJs
 function jumpToChat(){
-    window.location.href="chat.html"
+    window.location.href="server/chat.html"
 }
 function jumpToLog() {
-    window.location.href = "login.html";
+    window.location.href = "server/log.html";
 }
 function jumpToHo() {
     window.location.href = "index.html";

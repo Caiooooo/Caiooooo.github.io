@@ -1,7 +1,17 @@
-// 获取 URL 中的 title 参数
+// 获取 URL 中的 title 参数或路径参数
 const urlParams = new URLSearchParams(window.location.search);
-title = urlParams.get('title');
+let title = urlParams.get('title');
 
+// 检查是否使用动态路径
+const path = window.location.pathname;
+if (path.startsWith('/blog/') && path !== '/blog/') {
+    title = path.replace('/blog/', '');
+    // 更新浏览器历史，但不刷新页面
+    const newUrl = `/blog/${encodeURIComponent(title)}`;
+    if (window.location.pathname !== newUrl) {
+        window.history.replaceState(null, '', newUrl);
+    }
+}
 
 if (title) {
     document.title = title;
@@ -37,9 +47,10 @@ if (title) {
 
             // 遍历json数据
             data.forEach(file => {
-                // 创建新的<a>标签
+                // 创建新的<a>标签，使用SEO友好的动态路径
                 let aTag = document.createElement('a');
-                aTag.href = `createIdea.html?title=${file.slice(0, -3)}`;
+                const articleName = file.slice(0, -3);
+                aTag.href = `/blog/${encodeURIComponent(articleName)}`;
                 aTag.classList.add('card-default');
 
                 // 创建card div
@@ -63,7 +74,7 @@ if (title) {
                 cardMainDiv.style.height = "100%";
 
                 let cardNameDiv = document.createElement('div');
-                let titleall = file.slice(0, -3);
+                let titleall = articleName;
                 if (titleall.length > 15) {
                     cardNameDiv.style.marginTop = "-5px"
                 }
