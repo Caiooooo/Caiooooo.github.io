@@ -1,128 +1,203 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>站点地图 - 寻声 | 打破第四面墙</title>
-    <link rel="shortcut icon" href="www/img/logo.png">
-    <link rel="stylesheet" href="www/css/style.css">
-    <link rel="stylesheet" href="www/css/font.css">
+    <title>网站地图 - 寻声博客</title>
+    <meta name="description" content="寻声博客网站地图，快速导航到所有页面和博客文章">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://buttonwood.cn/sitemap.html">
+    <link rel="shortcut icon" href="img/logo.png">
     <style>
-        .sitemap-container {
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8ff;
+        }
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            font-family: 'myfont', sans-serif;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 3px solid #4a90e2;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #4a90e2;
+            border-left: 4px solid #4a90e2;
+            padding-left: 15px;
+            margin-top: 30px;
         }
         .sitemap-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
             margin-bottom: 30px;
         }
-        .sitemap-section h2 {
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            color: #2c3e50;
+        .page-list {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4a90e2;
         }
-        .sitemap-list {
-            list-style-type: none;
-            padding-left: 20px;
+        .page-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
-        .sitemap-list li {
+        .page-list li {
             margin: 10px 0;
         }
-        .sitemap-list a {
+        .page-list a {
+            color: #333;
             text-decoration: none;
-            color: #3498db;
-            transition: color 0.3s;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 5px;
+            transition: all 0.3s;
         }
-        .sitemap-list a:hover {
-            color: #2980b9;
-            text-decoration: underline;
+        .page-list a:hover {
+            background: #4a90e2;
+            color: white;
+            transform: translateX(5px);
         }
-        .sitemap-header {
+        .page-description {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .priority-high { border-left-color: #e74c3c; }
+        .priority-medium { border-left-color: #f39c12; }
+        .priority-low { border-left-color: #95a5a6; }
+        .footer {
             text-align: center;
-            margin-bottom: 40px;
-        }
-        .sitemap-header img {
-            max-width: 100px;
-        }
-        .sitemap-header h1 {
-            margin-top: 10px;
-            color: #2c3e50;
-        }
-        .sitemap-description {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #7f8c8d;
-        }
-        @media (max-width: 768px) {
-            .sitemap-container {
-                padding: 10px;
-            }
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <div class="sitemap-container">
-        <div class="sitemap-header">
-            <img src="www/img/logo.png" alt="寻声 Logo">
-            <h1>寻声网站地图</h1>
-        </div>
-        
-        <div class="sitemap-description">
-            <p>欢迎访问寻声网站地图，这里提供了网站所有页面的导航链接，帮助您快速找到所需内容。</p>
-        </div>
-        
+    <div class="container">
+        <h1>网站地图</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            快速导航到寻声博客的所有页面内容
+        </p>
+
         <div class="sitemap-section">
-            <h2>主要页面</h2>
-            <ul class="sitemap-list">
-                <li><a href="./">首页</a> - 网站主入口</li>
-                <li><a href="./www/home.html">主页</a> - 网站主页面</li>
-                <li><a href="./www/index.html">登录/注册</a> - 用户登录和注册页面</li>
-                <li><a href="./www/designIdea.html">设计网站</a> - 设计相关内容</li>
-                <li><a href="./www/projects.html">个人项目</a> - 项目展示页面</li>
-                <li><a href="./www/photoIdea.html">足迹地图</a> - 地理位置和足迹展示</li>
-                <li><a href="./www/createIdea.html">个人博客</a> - 博客入口</li>
-                <li><a href="./www/aboutUs.html">联系作者</a> - 关于作者和联系方式</li>
+            <div class="page-list priority-high">
+                <h3>🏠 主要页面</h3>
+                <ul>
+                    <li>
+                        <a href="/">首页</a>
+                        <div class="page-description">寻声博客主页，了解我们的理念</div>
+                    </li>
+                    <li>
+                        <a href="/createIdea.html">个人博客</a>
+                        <div class="page-description">技术文章和开发经验分享</div>
+                    </li>
+                    <li>
+                        <a href="/designIdea.html">设计网站</a>
+                        <div class="page-description">创意设计和灵感收集</div>
+                    </li>
+                    <li>
+                        <a href="/projects.html">个人项目</a>
+                        <div class="page-description">技术项目展示和介绍</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="page-list priority-medium">
+                <h3>🎯 功能页面</h3>
+                <ul>
+                    <li>
+                        <a href="/photoIdea.html">足迹地图</a>
+                        <div class="page-description">个人足迹和地理记录</div>
+                    </li>
+                    <li>
+                        <a href="/chat.html">聊天室</a>
+                        <div class="page-description">在线交流和讨论</div>
+                    </li>
+                    <li>
+                        <a href="/videoRoom.html">视频通话</a>
+                        <div class="page-description">音视频通话功能</div>
+                    </li>
+                    <li>
+                        <a href="/aboutUs.html">关于我们</a>
+                        <div class="page-description">了解作者和网站背景</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="page-list priority-low">
+                <h3>👤 用户相关</h3>
+                <ul>
+                    <li>
+                        <a href="/log.html">登录</a>
+                        <div class="page-description">用户登录页面</div>
+                    </li>
+                    <li>
+                        <a href="/login.html">注册</a>
+                        <div class="page-description">新用户注册页面</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📝 博客文章</h2>
+        <div class="page-list">
+            <p>以下是最新的技术博客文章：</p>
+            <ul>
+                <li>
+                    <a href="/blog/stardew-valley-tea-sapling-bug-fix">星露谷物语 - 解决茶苗bug问题</a>
+                    <div class="page-description">游戏bug修复方案</div>
+                </li>
+                <li>
+                    <a href="/blog/jetpack-livedata-transformations-import-issue">Jetpack篇 - LiveData Transformations导入问题</a>
+                    <div class="page-description">Android开发技术解决方案</div>
+                </li>
+                <li>
+                    <a href="/blog/bomb-lab-phase5-detailed-analysis">Bomb Lab Phase5 最详细解析</a>
+                    <div class="page-description">计算机系统实验详解</div>
+                </li>
+                <li>
+                    <a href="/blog/kruskal-reconstruction-tree-icpc-shanghai">Kruskal重构树算法解析</a>
+                    <div class="page-description">算法竞赛技术分享</div>
+                </li>
+                <li>
+                    <a href="/blog/packet-tracer-router-chap-authentication">Packet Tracer路由器配置CHAP认证</a>
+                    <div class="page-description">网络技术配置教程</div>
+                </li>
+                <li>
+                    <a href="/blog/nodejs-subdomain-jupyterlab-configuration">Node.js子域名搭建JupyterLab配置</a>
+                    <div class="page-description">服务器配置技术分享</div>
+                </li>
+                <li>
+                    <a href="/blog/csapp-shell-lab-waitfg-sigsuspend">CSAPP Shell Lab - sigsuspend实现waitfg函数</a>
+                    <div class="page-description">系统编程实验解析</div>
+                </li>
+                <li>
+                    <a href="/blog/python-http-request-acceleration">混合编程加速Python HTTP请求</a>
+                    <div class="page-description">性能优化技术方案</div>
+                </li>
             </ul>
         </div>
-        
-        <div class="sitemap-section">
-            <h2>功能页面</h2>
-            <ul class="sitemap-list">
-                <li><a href="./www/chat.html">聊天页面</a> - 在线聊天功能</li>
-                <li><a href="./www/videoRoom.html">视频房间</a> - 视频通话功能</li>
-                <li><a href="./www/log.html">日志页面</a> - 系统日志</li>
-                <li><a href="./www/404.html">404页面</a> - 页面未找到</li>
-            </ul>
+
+        <div class="footer">
+            <p>© 2025 寻声博客 - Buttonwood | 
+            <a href="/sitemap.xml" style="color: #4a90e2;">XML网站地图</a> | 
+            <a href="/" style="color: #4a90e2;">返回首页</a></p>
+            <p style="font-size: 12px;">最后更新：2025年5月23日</p>
         </div>
-        
-        <div class="sitemap-section">
-            <h2>博客文章</h2>
-            <ul class="sitemap-list">
-                <li><a href="./blog/stardew-valley-tea-sapling-bug-fix.html">星露谷解决茶苗bug问题</a> - 解决星露谷物语中茶苗配方不送到家的bug</li>
-                <li><a href="./www/blog/[星露谷]解决茶苗bug问题.md">星露谷解决茶苗bug问题 (原始链接)</a></li>
-                <li><a href="./www/blog/[第一行代码]Jetpack篇——LiveData，Transformations无法导入.md">第一行代码Jetpack篇——LiveData，Transformations无法导入</a></li>
-                <li><a href="./www/blog/bomb_lab phase5最详细解析！.md">bomb_lab phase5最详细解析！</a></li>
-                <li><a href="./www/blog/kruskal重构树(以ICPC上海 2021 H.Life is a Game 为例).md">kruskal重构树(以ICPC上海 2021 H.Life is a Game 为例)</a></li>
-                <li><a href="./www/blog/packet tracer路由器配置chap认证.md">packet tracer路由器配置chap认证</a></li>
-                <li><a href="./www/blog/使用nodejs子域名搭建jupyterlab时的关键配置.md">使用nodejs子域名搭建jupyterlab时的关键配置</a></li>
-                <li><a href="./www/blog/使用sigsuspend完成csapp的shellLab中的waitfg(pid_t pid)函数.md">使用sigsuspend完成csapp的shellLab中的waitfg(pid_t pid)函数</a></li>
-                <li><a href="./www/blog/混合编程加速PythonHttp请求速度.md">混合编程加速PythonHttp请求速度</a></li>
-            </ul>
-        </div>
-        
-        <div class="sitemap-section">
-            <h2>资源</h2>
-            <ul class="sitemap-list">
-                <li><a href="./sitemap.xml">XML站点地图</a> - 供搜索引擎使用的XML格式站点地图</li>
-                <li><a href="./robots.txt">Robots.txt</a> - 搜索引擎爬虫指南</li>
-            </ul>
-        </div>
-        
-        <footer style="text-align: center; margin-top: 50px; color: #7f8c8d; font-size: 0.9em;">
-            <p>© 2024 寻声 - 打破第四面墙 | 站点地图最后更新时间: 2024-03-04</p>
-        </footer>
     </div>
 </body>
 </html> 

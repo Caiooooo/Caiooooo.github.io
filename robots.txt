@@ -1,3 +1,24 @@
 User-agent: *
 Allow: /
-Sitemap: https://buttonwood.cn/sitemap.xml 
+Sitemap: https://buttonwood.cn/sitemap.xml
+
+# 禁止抓取敏感目录和文件
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.idea/
+Disallow: /ssl/
+Disallow: /*.db$
+Disallow: /test.db
+Disallow: /node_modules/
+Disallow: /package*.json
+Disallow: /.gitignore
+Disallow: /generate-seo.js
+Disallow: /startCoturn.sh
+Disallow: /startServerJs.sh
+
+# 允许重要的静态资源
+Allow: /css/
+Allow: /js/
+Allow: /img/
+Allow: /blog/
+Allow: /resources/ 

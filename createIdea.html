@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>寻感 - 寻找无穷创作灵感</title>
     <meta id="meta-description" name="description" content="寻感 - 寻找无穷创作灵感，分享技术与游戏经验">
-    <meta id="meta-keywords" name="keywords" content="博客,技术分享,游戏攻略">
-    <link id="canonical-link" rel="canonical" href="https://buttonwood.cn/www/createIdea.html">
+    <meta id="meta-keywords" name="keywords" content="博客,技术分享,游戏攻略,编程教程,开发经验">
+    <meta name="author" content="Buttonwood">
+    <meta name="robots" content="index,follow">
+    <link id="canonical-link" rel="canonical" href="https://buttonwood.cn/createIdea.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="寻声博客">
+    <meta id="og-url" property="og:url" content="https://buttonwood.cn/createIdea.html">
+    <meta id="og-title" property="og:title" content="寻感 - 寻找无穷创作灵感">
+    <meta id="og-description" property="og:description" content="寻感 - 寻找无穷创作灵感，分享技术与游戏经验">
+    <meta property="og:image" content="https://buttonwood.cn/img/logo.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta id="twitter-url" property="twitter:url" content="https://buttonwood.cn/createIdea.html">
+    <meta id="twitter-title" property="twitter:title" content="寻感 - 寻找无穷创作灵感">
+    <meta id="twitter-description" property="twitter:description" content="寻感 - 寻找无穷创作灵感，分享技术与游戏经验">
+    <meta property="twitter:image" content="https://buttonwood.cn/img/logo.png">
+    
     <link rel="shortcut icon" href="img/logo.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/font.css">
@@ -26,23 +44,34 @@
             const title = urlParams.get('title');
             
             if (title) {
+                const decodedTitle = decodeURIComponent(title);
+                
                 // 更新页面标题
-                document.title = decodeURIComponent(title) + ' - 寻感博客';
+                document.title = decodedTitle + ' - 寻感博客';
                 
                 // 更新meta description
                 const metaDesc = document.getElementById('meta-description');
-                metaDesc.content = '寻感博客 - ' + decodeURIComponent(title) + '，提供详细解决方案和技术指导';
+                metaDesc.content = '寻感博客 - ' + decodedTitle + '，提供详细解决方案和技术指导';
                 
                 // 更新meta keywords
                 const metaKeywords = document.getElementById('meta-keywords');
-                // 从标题中提取关键词
-                const keywordsFromTitle = decodeURIComponent(title).replace(/[\[\]]/g, '').split(/[,，\s]/);
+                const keywordsFromTitle = decodedTitle.replace(/[\[\]]/g, '').split(/[,，\s]/);
                 const filteredKeywords = keywordsFromTitle.filter(k => k.length > 1);
-                metaKeywords.content = filteredKeywords.join(',') + ',教程,解决方案,博客';
+                metaKeywords.content = filteredKeywords.join(',') + ',教程,解决方案,博客,技术分享';
                 
                 // 更新规范链接
                 const canonicalLink = document.getElementById('canonical-link');
-                canonicalLink.href = 'https://buttonwood.cn/www/createIdea.html?title=' + encodeURIComponent(title);
+                canonicalLink.href = 'https://buttonwood.cn/createIdea.html?title=' + encodeURIComponent(title);
+                
+                // 更新Open Graph标签
+                document.getElementById('og-url').content = 'https://buttonwood.cn/createIdea.html?title=' + encodeURIComponent(title);
+                document.getElementById('og-title').content = decodedTitle + ' - 寻感博客';
+                document.getElementById('og-description').content = '寻感博客 - ' + decodedTitle + '，提供详细解决方案和技术指导';
+                
+                // 更新Twitter标签
+                document.getElementById('twitter-url').content = 'https://buttonwood.cn/createIdea.html?title=' + encodeURIComponent(title);
+                document.getElementById('twitter-title').content = decodedTitle + ' - 寻感博客';
+                document.getElementById('twitter-description').content = '寻感博客 - ' + decodedTitle + '，提供详细解决方案和技术指导';
             }
         });
     </script>

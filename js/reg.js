@@ -101,7 +101,7 @@ function jumpToCr() {
     window.location.href = "createIdea.html";
 }
 function jumpToAb() {
-    window.location.href = "aboutUs.html";
+    window.location.href = "buttonwood.html";
 }
 
 function jumpToIn() {
