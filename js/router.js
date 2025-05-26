@@ -2,6 +2,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     const path = window.location.pathname;
     
+    // 优先检查是否是www开头的路径，如果是则自动重定向
+    if (path.startsWith('/www/')) {
+        // 删除www前缀并重定向
+        const newPath = path.replace('/www/', '/');
+        const newUrl = window.location.origin + newPath + window.location.search + window.location.hash;
+        window.location.replace(newUrl);
+        return;
+    }
+    
     // 检查是否是博客文章路径
     if (path.startsWith('/blog/')) {
         const articleName = path.replace('/blog/', '');
