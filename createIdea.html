@@ -77,7 +77,7 @@
     </script>
 
 </head>
-<body onload="loaduser();" id="home">
+<body id="home">
     <div class="container">
 
         <div class="left-box" id="left-box"></div>
@@ -99,7 +99,10 @@
                     handler.style.left = "5px";
                     handler.classList.add('close');
                     menuButton.style.display = 'block';
-                    document.querySelector(".right-top-span-2").style.display = 'none';
+                    const rightTopSpan2 = document.querySelector(".right-top-span-2");
+                    if (rightTopSpan2) {
+                        rightTopSpan2.style.display = 'none';
+                    }
                 } else {
                     // 使用容器宽度的20%作为侧边栏宽度，最小210px
                     const sidebarWidth = Math.max(containerWidth * 0.02, 210);
@@ -116,7 +119,9 @@
                 .then(data => {
                     document.getElementById('left-box').innerHTML = data;
                     const items = document.querySelectorAll('.item');
-                    items[4].style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                    if (items.length > 4) {
+                        items[4].style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                    }
                     
                     // 初始设置宽度
                     setLeftBoxWidth();
@@ -129,18 +134,25 @@
                     const leftBox = document.getElementById('left-box');
                     const handler = document.querySelector('.handler');
                     
-                    menuButton.addEventListener('click', function() {
-                        this.classList.toggle('active');
-                        if (leftBox.style.width === '0px') {
-                            leftBox.style.width = '210px';
-                            handler.style.left = "215px";
-                            handler.classList.remove('close');
-                        } else {
-                            leftBox.style.width = '0';
-                            handler.style.left = "5px";
-                            handler.classList.add('close');
-                        }
-                    });
+                    if (menuButton) {
+                        menuButton.addEventListener('click', function() {
+                            this.classList.toggle('active');
+                            if (leftBox.style.width === '0px') {
+                                leftBox.style.width = '210px';
+                                handler.style.left = "215px";
+                                handler.classList.remove('close');
+                            } else {
+                                leftBox.style.width = '0';
+                                handler.style.left = "5px";
+                                handler.classList.add('close');
+                            }
+                        });
+                    }
+                    
+                    // 在leftbox加载完成后调用loaduser
+                    if (typeof loaduser === 'function') {
+                        loaduser();
+                    }
                 })
                 .catch(error => console.error('Error loading left-box.html:', error));
         </script>

@@ -41,30 +41,39 @@ function loaduser(){
     // 收起侧边栏
     var handler = document.querySelector('.handler');
     var leftBox = document.querySelector('.left-box');
-    handler.addEventListener("click", function () {
-        if (!this.classList.contains('close')) {
-            leftBox.style.width = 0;
-            handler.style.left = "5px";
-            this.classList.add('close');
-        } else {
-            leftBox.style.width = 210 + 'px';
-            handler.style.left = "215px";
-            this.classList.remove('close');
-        }
-    });
+    
+    if (handler && leftBox) {
+        handler.addEventListener("click", function () {
+            if (!this.classList.contains('close')) {
+                leftBox.style.width = 0;
+                handler.style.left = "5px";
+                this.classList.add('close');
+            } else {
+                leftBox.style.width = 210 + 'px';
+                handler.style.left = "215px";
+                this.classList.remove('close');
+            }
+        });
+    }
+    
     //设置侧边栏信息
     var username = document.getElementById("userName");
     var url = location.href;
 
-    try {
-        // get Params
-        // username.innerHTML = url.split("?")[1].split("=")[1];
-    } catch (error) {
-        username.innerHTML = "bw"; // 处理错误时的备用内容
-    }
-    usrName = username;
-    if (username.innerHTML === "") {
-        var userImage = document.querySelector(".user-info img").src = "bw";
+    if (username) {
+        try {
+            // get Params
+            // username.innerHTML = url.split("?")[1].split("=")[1];
+        } catch (error) {
+            username.innerHTML = "bw"; // 处理错误时的备用内容
+        }
+        usrName = username;
+        if (username.innerHTML === "") {
+            var userImage = document.querySelector(".user-info img");
+            if (userImage) {
+                userImage.src = "img/bw.jpg";
+            }
+        }
     }
 }
 //aborted

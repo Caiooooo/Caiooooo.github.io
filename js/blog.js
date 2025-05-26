@@ -1,34 +1,24 @@
-// 获取 URL 中的 title 参数或路径参数
+// 获取 URL 中的 title 参数
 const urlParams = new URLSearchParams(window.location.search);
 let title = urlParams.get('title');
 
-// 检查是否使用动态路径
-const path = window.location.pathname;
-if (path.startsWith('/blog/') && path !== '/blog/') {
-    title = path.replace('/blog/', '');
-    // 更新浏览器历史，但不刷新页面
-    const newUrl = `/blog/${encodeURIComponent(title)}`;
-    if (window.location.pathname !== newUrl) {
-        window.history.replaceState(null, '', newUrl);
-    }
-}
-
 if (title) {
-    document.title = title;
+    document.title = title + ' - 寻感博客';
     file_path = './blog/' + title + '.md';
     // 使用 fetch 获取文件内容
     fetch(file_path)
         .then(response => {
             if (!response.ok) {
-                window.location.href = window.location.href.split('?')[0];  // 获取当前网页的URL
-                throw new Error('Network response was not ok');
+                // 如果文章不存在，重定向到博客列表
+                window.location.href = '/createIdea.html';
+                throw new Error('Article not found');
             }
-
             return response.text();
         })
         .then(data => {
             if (data === null) {
-                window.location.href = window.location.href.split('?')[0];
+                window.location.href = '/createIdea.html';
+                return;
             }
             document.querySelector('.cardList').style.display = "none";
             const textarea = document.getElementById('$t');
@@ -37,8 +27,13 @@ if (title) {
             document.getElementById('$m').innerHTML = marked.parse(textarea.value);
             hljs.highlightAll();
         })
-        .catch(error => console.error('Error fetching the file:', error));
+        .catch(error => {
+            console.error('Error fetching the file:', error);
+            // 文章不存在时重定向到博客列表
+            window.location.href = '/createIdea.html';
+        });
 } else {
+    // 显示博客列表
     fetch('./blog/blogs.json')
         .then(response => response.json())
         .then(data => {
@@ -47,10 +42,10 @@ if (title) {
 
             // 遍历json数据
             data.forEach(file => {
-                // 创建新的<a>标签，使用SEO友好的动态路径
+                // 创建新的<a>标签，使用查询参数方式
                 let aTag = document.createElement('a');
                 const articleName = file.slice(0, -3);
-                aTag.href = `/blog/${encodeURIComponent(articleName)}`;
+                aTag.href = `/createIdea.html?title=${encodeURIComponent(articleName)}`;
                 aTag.classList.add('card-default');
 
                 // 创建card div
@@ -101,5 +96,5 @@ if (title) {
                 cardList.appendChild(aTag);
             });
         })
-        .catch(error => console.error(error));
+        .catch(error => console.error('Error loading blog list:', error));
 }
