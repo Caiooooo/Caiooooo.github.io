@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f4f0"><meta name="description" content="按星期查看和跟踪训练计划，包含动作示例和组间计时器。">
+  <title>训练计划 · 寻声</title>
+  <link rel="stylesheet" href="css/training.css"><script src="js/training.js" defer></script>
+</head>
+<body>
+<header class="top"><a class="back" href="index.html" aria-label="返回首页">← <span>寻声</span></a><span class="top-label">TRAINING / 训练追踪</span><button id="sound-toggle" class="sound-toggle" aria-pressed="true">♫ 提示音开</button></header>
+<main class="shell">
+  <section class="intro"><p class="eyebrow">YOUR WEEKLY ROUTINE</p><h1>按计划，<em>稳稳练。</em></h1><p class="sub">每次完成一组就点一下；休息时间交给计时器。</p></section>
+  <section class="today card" aria-live="polite"><div><span class="today-kicker">今天 · <span id="today-date"></span></span><h2 id="today-title">正在读取星期…</h2><p id="today-note"></p></div><div class="today-badge" id="today-badge">—</div></section>
+  <section class="week-strip" aria-label="本周训练安排" id="week-strip"></section>
+  <section class="workout" id="workout"></section>
+  <section class="rest-day card" id="rest-day" hidden><div class="rest-icon">☁</div><div><h2>今天安排休息</h2><p>轻松散步、拉伸或恢复体力。训练日会自动按本机日期切换。</p></div></section>
+  <footer>动作示例用于辅助理解；按自身能力调整重量与幅度。<br>进度仅保存在当前浏览器。</footer>
+</main>
+<div class="timer-dock" id="timer-dock" hidden role="status"><div class="timer-copy"><span id="timer-label">组间休息</span><strong id="timer-value">01:00</strong></div><div class="timer-actions"><button id="timer-toggle" class="primary">开始</button><button id="timer-reset" class="quiet">重置</button><button id="timer-close" class="quiet" aria-label="关闭计时器">×</button></div></div>
+<dialog id="demo-dialog"><button class="dialog-close" id="dialog-close" aria-label="关闭">×</button><p class="eyebrow">MOVEMENT GUIDE</p><h2 id="demo-title"></h2><div id="demo-visual" class="demo-visual"></div><p id="demo-cue" class="demo-cue"></p><a id="demo-video" class="video-link" target="_blank" rel="noopener">▶ 查看动作视频示例</a><p class="video-hint">视频由 Wikimedia Commons 搜索提供，需联网打开。</p></dialog>
+</body></html>
